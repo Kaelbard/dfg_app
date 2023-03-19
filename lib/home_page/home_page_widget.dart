@@ -1,6 +1,5 @@
-import 'package:myapp/components/highlightcards_widget.dart';
+import 'package:DFG/components/highlightcards_widget.dart';
 import '../backend/api_requests/api_calls.dart';
-import '../components/appbar_widget.dart';
 import '../components/category_widget.dart';
 import '../components/navbar_widget.dart';
 import '../components/products_widget.dart';
@@ -15,6 +14,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 
 import '../components/highlightcards_model.dart';
 export '../components/highlightcards_model.dart';
@@ -57,44 +57,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
-          child: GestureDetector(
-            onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-            child: Stack(
-              children: [
-                SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          wrapWithModel(
-                            model: _model.appbarModel,
-                            updateCallback: () => setState(() {}),
-                            child: AppbarWidget(),
+                          Expanded(
+                            child: wrapWithModel(
+                              model: _model.searchbarModel,
+                              updateCallback: () => setState(() {}),
+                              child: SearchbarWidget(),
+                            ),
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: wrapWithModel(
-                                model: _model.searchbarModel,
-                                updateCallback: () => setState(() {}),
-                                child: SearchbarWidget(),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    ),
+                    if (_model.searchbarModel.textController.text == '')
                       ListView(
                         physics: RangeMaintainingScrollPhysics(),
                         padding: EdgeInsets.zero,
@@ -153,7 +143,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .toList();
                                                 return Container(
                                                   width: double.infinity,
-                                                  height: 410,
+                                                  height: 300,
                                                   child: Stack(
                                                     children: [
                                                       Padding(
@@ -272,7 +262,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               activeDotColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .primaryColor,
                                                               paintStyle:
                                                                   PaintingStyle
                                                                       .fill,
@@ -293,31 +283,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16, 0, 16, 8),
+                                      16, 0, 8, 8),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          'Categorias',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1,
-                                        ),
-                                      ),
-                                    ],
                                   ),
                                 ),
                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16, 0, 16, 0),
                                         width:
                                             MediaQuery.of(context).size.width,
-                                        height: 112,
+                                        height: 345,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
@@ -333,14 +316,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16, 8, 16, 4),
+                                      16, 0, 0, 8),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
+                                      SizedBox(
+                                        height: 25,
+                                        child: VerticalDivider(
+                                          indent: 0,
+                                          thickness: 4,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
                                       Expanded(
                                         child: Text(
-                                          'Anuncios recentes',
+                                          'Anúncios recentes',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1,
                                         ),
@@ -354,7 +346,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Container(
-                                        height: 210,
+                                        height: 220,
                                         decoration: BoxDecoration(),
                                         child: wrapWithModel(
                                           model: _model.productsModel,
@@ -367,11 +359,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16, 8, 16, 4),
+                                      16, 0, 4, 8),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
+                                      SizedBox(
+                                        height: 25,
+                                        child: VerticalDivider(
+                                          thickness: 4,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
                                       Expanded(
                                         child: Text(
                                           'Promocionais',
@@ -388,7 +388,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Container(
-                                        height: 210,
+                                        height: 220,
                                         decoration: BoxDecoration(),
                                         child: wrapWithModel(
                                           model: _model.promoModel,
@@ -401,11 +401,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16, 8, 16, 4),
+                                      16, 0, 4, 8),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
+                                      SizedBox(
+                                        height: 25,
+                                        child: VerticalDivider(
+                                          thickness: 4,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
                                       Expanded(
                                         child: Text(
                                           'Mais Populares',
@@ -422,7 +430,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Container(
-                                        height: 210,
+                                        height: 220,
                                         decoration: BoxDecoration(),
                                         child: wrapWithModel(
                                           model: _model.mostpopularModel,
@@ -433,17 +441,37 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ],
                                   ),
                                 ),
-                                Divider(
-                                  color: Color.fromARGB(255, 40, 175, 148),
-                                  indent: 100.0,
-                                  endIndent: 100.0,
-                                  thickness: 2,
+
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 0, 16, 8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 25,
+                                        child: VerticalDivider(
+                                          thickness: 4,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          'Comentários e avaliações',
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle1,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 Container(
                                   alignment: Alignment.topCenter,
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16, 16, 16, 16),
-                                  height: 248,
+                                      16, 8, 16, 16),
+                                  height: 240,
                                   decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -461,41 +489,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ],
                             ),
                           ),
-                          Container(
-                            height: 60,
-                          )
                         ],
                       ),
-                    ],
-                  ),
+                  ],
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0, 0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            wrapWithModel(
-                              model: _model.navbarModel,
-                              updateCallback: () => setState(() {}),
-                              child: NavbarWidget(),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

@@ -1,0 +1,177 @@
+if (columnSearchResponse.jsonBody != null)
+  Padding(
+    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+    child: FutureBuilder<ApiCallResponse>(
+      future: DFGGroupGroup.searchCall.call(
+        itemID: columnSearchResponse.jsonBody,
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 50,
+              height: 50,
+              child: CircularProgressIndicator(
+                color: FlutterFlowTheme.of(context).primaryColor,
+              ),
+            ),
+          );
+        }
+        final listViewSearchResponse = snapshot.data!;
+        return Builder(
+          builder: (context) {
+            final retorno = (DFGGroupGroup.searchCall
+                        .itemIDnolist(
+                          columnSearchResponse.jsonBody,
+                        )
+                        ?.toList() ??
+                    [])
+                .take(39)
+                .toList();
+            return ListView.builder(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: retorno.length,
+              itemBuilder: (context, retornoIndex) {
+                final retornoItem = retorno[retornoIndex];
+                return Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                      ),
+                      child: Card(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        color:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            context.pushNamed('product');
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            height: 80,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.network(
+                                      DFGGroupGroup.searchCall.thumbnailLink(
+                                        columnSearchResponse.jsonBody,
+                                      )[retornoIndex],
+                                      width: 115,
+                                      height: 90,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ],
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0, 0, 8, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              width: 220,
+                                              height: 29.4,
+                                              decoration: BoxDecoration(
+                                                color: FlutterFlowTheme.of(
+                                                        context)
+                                                    .secondaryBackground,
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 0, 0),
+                                                child: Text(
+                                                  (DFGGroupGroup.searchCall
+                                                          .titlelist(
+                                                    columnSearchResponse
+                                                        .jsonBody,
+                                                  ) as List)
+                                                      .map<String>(
+                                                          (s) => s.toString())
+                                                      .toList()[retornoIndex]
+                                                      .maybeHandleOverflow(
+                                                        maxChars: 60,
+                                                        replacement: '…',
+                                                      ),
+                                                  textAlign: TextAlign.end,
+                                                  maxLines: 1,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Spacer(),
+                                      Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0, 0, 8, 4),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              (DFGGroupGroup.searchCall.price(
+                                                columnSearchResponse.jsonBody,
+                                              ) as List)
+                                                  .map<String>(
+                                                      (s) => s.toString())
+                                                  .toList()[retornoIndex]
+                                                  .toString(),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            );
+          },
+        );
+      },
+    ),
+  )

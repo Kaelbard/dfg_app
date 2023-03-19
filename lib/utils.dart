@@ -21,6 +21,7 @@ String formatPrice(String priceAsString) {
     currency: 'R\$ ',
     decimalSeparator: ',',
     fractionDigits: 2,
+    textAlign: TextAlign.center,
   );
   if (price == price.truncate()) {
     formattedPrice += ',00';

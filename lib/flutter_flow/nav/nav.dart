@@ -32,12 +32,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, _) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: Color(0xFF28AF94),
                 child: Center(
                   child: Image.asset(
                     'assets/images/Logo_temporaria.png',
-                    width: 100,
-                    height: 100,
+                    width: 100.0,
+                    height: 100.0,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -51,12 +51,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: Color(0xFF28AF94),
                     child: Center(
                       child: Image.asset(
                         'assets/images/Logo_temporaria.png',
-                        width: 100,
-                        height: 100,
+                        width: 100.0,
+                        height: 100.0,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -69,7 +69,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'homePage',
               builder: (context, params) => HomePageWidget(),
             ),
-            
+            FFRoute(
+              name: 'product',
+              path: 'product',
+              builder: (context, params) => ProductWidget(
+                itemID: params.getParam('itemID', ParamType.JSON),
+              ),
+            )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
       ],

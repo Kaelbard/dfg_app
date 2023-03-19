@@ -60,16 +60,15 @@ class _CommentWidgetState extends State<CommentWidget> {
               return Builder(
                 builder: (context) {
                   final feedback = ((DFGFeedbacksCall.comment(
-                            pageViewDFGFeedbacksResponse.jsonBody,
-                          ) as List)
-                              .map<String>((s) => s.toString())
-                              .toList()
-                              ?.toList() ??
-                          [])
+                    pageViewDFGFeedbacksResponse.jsonBody,
+                  ) as List)
+                          .map<String>((s) => s.toString())
+                          .toList()
+                          .toList())
                       .take(5)
                       .toList();
                   return Container(
-                    width: 320,
+                    width: MediaQuery.of(context).size.width * 0.92,
                     height: double.infinity,
                     child: Stack(
                       children: [
@@ -99,7 +98,10 @@ class _CommentWidgetState extends State<CommentWidget> {
                                               BorderRadius.circular(10),
                                         ),
                                         child: Container(
-                                          width: 270,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.9,
                                           height: 148,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
@@ -123,7 +125,11 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                             .fromSTEB(
                                                                 0, 4, 0, 0),
                                                     child: Container(
-                                                      width: 260,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.9,
                                                       height: 25,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
@@ -141,8 +147,15 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                             pageViewDFGFeedbacksResponse
                                                                 .jsonBody,
                                                           ) as List)
-                                                              .map<String>((s) =>
-                                                                  s.toString())
+                                                              .map<
+                                                                  String>((s) => s !=
+                                                                      null
+                                                                  ? s
+                                                                      .toString()
+                                                                      .replaceAll(
+                                                                          'null',
+                                                                          'Anônimo')
+                                                                  : 'Anônimo')
                                                               .toList()[
                                                                   feedbackIndex]
                                                               .toString(),
@@ -176,7 +189,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                     child: Container(
                                                       alignment:
                                                           Alignment.center,
-                                                      width: 250,
+                                                      width: 320,
                                                       height: 70,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
@@ -195,7 +208,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                             feedbackIndex],
                                                         textAlign:
                                                             TextAlign.center,
-                                                        maxLines: 2,
+                                                        maxLines: 3,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -203,7 +216,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  fontSize: 12,
+                                                                  fontSize: 14,
                                                                 ),
                                                       ),
                                                     ),
@@ -222,7 +235,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                       CrossAxisAlignment.end,
                                                   children: [
                                                     Container(
-                                                      width: 250,
+                                                      width: 360,
                                                       height: 40,
                                                       decoration:
                                                           BoxDecoration(),

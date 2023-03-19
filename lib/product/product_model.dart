@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/searchbar_model.dart';
+import '../components/searchbar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -19,6 +19,8 @@ class ProductModel extends FlutterFlowModel {
   late SearchbarModel searchbarModel;
   // State field(s) for PageView widget.
   PageController? pageViewController;
+
+  get promoModel => null;
 
   /// Initialization and disposal methods.
 

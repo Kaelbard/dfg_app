@@ -73,7 +73,7 @@ String formatNumber(
   String? currency,
   bool toLowerCase = false,
   String? format,
-  String? locale, required int fractionDigits, required String decimalSeparator,
+  String? locale, required int fractionDigits, required String decimalSeparator, required TextAlign textAlign,
 }) {
   if (value == null) {
     return '';

@@ -11,6 +11,8 @@ class CategoryModel extends FlutterFlowModel {
 
   void dispose() {}
 
+  void maybeDispose() {}
+
   /// Additional helper methods are added here.
 
 }

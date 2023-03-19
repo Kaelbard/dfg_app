@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AppbarModel extends FlutterFlowModel {
+  get searchbarModel => null;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

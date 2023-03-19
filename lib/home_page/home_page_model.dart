@@ -1,4 +1,3 @@
-import '../components/appbar_widget.dart';
 import '../components/category_widget.dart';
 import '../components/comment_widget.dart';
 import '../components/navbar_widget.dart';
@@ -19,7 +18,6 @@ class HomePageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   // Model for appbar component.
-  late AppbarModel appbarModel;
   // Model for searchbar component.
   late SearchbarModel searchbarModel;
   // State field(s) for PageView widget.
@@ -27,7 +25,7 @@ class HomePageModel extends FlutterFlowModel {
   // Model for category component.
   late CategoryModel categoryModel;
   // Model for products component.
-  late ProductsModel productsModel;
+  late ProductModel productsModel;
   late PromoModel promoModel;
   late MostpopularModel mostpopularModel;
   late HighlightcardsModel highlightcardsModel;
@@ -38,10 +36,9 @@ class HomePageModel extends FlutterFlowModel {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    appbarModel = createModel(context, () => AppbarModel());
     searchbarModel = createModel(context, () => SearchbarModel());
     categoryModel = createModel(context, () => CategoryModel());
-    productsModel = createModel(context, () => ProductsModel());
+    productsModel = createModel(context, () => ProductModel());
     promoModel = createModel(context, () => PromoModel());
     commentModel = createModel(context, () => CommentModel());
     highlightcardsModel = createModel(context, () => HighlightcardsModel());
@@ -50,7 +47,6 @@ class HomePageModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    appbarModel.dispose();
     searchbarModel.dispose();
     categoryModel.dispose();
     productsModel.dispose();

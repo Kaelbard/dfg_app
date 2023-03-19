@@ -1,3 +1,4 @@
+import 'package:DFG/flutter_flow/nav/nav.dart';
 import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -40,7 +41,7 @@ class _MostpopularWidgetState extends State<MostpopularWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
       child: FutureBuilder<ApiCallResponse>(
         future: DFGMostPopularCall.call(),
         builder: (context, snapshot) {
@@ -79,109 +80,65 @@ class _MostpopularWidgetState extends State<MostpopularWidget> {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Material(
-                              color: Colors.transparent,
-                              elevation: 1,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Container(
-                                width: 120,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                            InkWell(
+                              onTap: () async {
+                                context.pushNamed(
+                                  'product',
+                                  queryParams: {
+                                    'itemID': serializeParam(
+                                      getJsonField(
+                                        bodyItem,
+                                        r'''$.itemID''',
+                                      ),
+                                      ParamType.JSON,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 2,
+                                shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: Stack(
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          4, 4, 4, 4),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Expanded(
-                                            child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                child: Image.network(
-                                                  _fixImageUrl(
-                                                      DFGMostPopularCall.imagem(
-                                                              listViewDFGmostpopularResponse
-                                                                  .jsonBody)[
-                                                          bodyIndex]),
-                                                  width: 114,
-                                                  height: 146,
-                                                  fit: BoxFit.cover,
-                                                )),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8, 8, 8, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            width: 80,
-                                            height: 20,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  Color.fromRGBO(13, 99, 82, 1),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
+                                child: Container(
+                                  width: 120,
+                                  height: 150,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Stack(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 0, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                              child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  child: Image.network(
+                                                    _fixImageUrl(
+                                                        DFGMostPopularCall.imagem(
+                                                                listViewDFGmostpopularResponse
+                                                                    .jsonBody)[
+                                                            bodyIndex]),
+                                                    width: 120,
+                                                    height: 150,
+                                                    fit: BoxFit.cover,
+                                                  )),
                                             ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Align(
-                                                  alignment: Alignment.center,
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                4, 4, 4, 4),
-                                                    child: Text(
-                                                      formatPrice((DFGMostPopularCall.price(
-                                                                  listViewDFGmostpopularResponse
-                                                                      .jsonBody)
-                                                              as List)
-                                                          .map<String>((s) =>
-                                                              s.toString())
-                                                          .toList()[bodyIndex]),
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            fontSize: 10,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -209,27 +166,70 @@ class _MostpopularWidgetState extends State<MostpopularWidget> {
                             final rowDFGmostpopularResponse = snapshot.data!;
                             return Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Container(
-                                  width: 100,
-                                  height: 35,
-                                  decoration: BoxDecoration(),
-                                  child: Text(
-                                    (DFGMostPopularCall.title(
-                                      listViewDFGmostpopularResponse.jsonBody,
-                                    ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList()[bodyIndex]
-                                        .toString(),
-                                    maxLines: 2,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: 120,
+                                          decoration: BoxDecoration(),
+                                          child: Text(
+                                            (DFGMostPopularCall.title(
+                                              listViewDFGmostpopularResponse
+                                                  .jsonBody,
+                                            ) as List)
+                                                .map<String>(
+                                                    (s) => s.toString())
+                                                .toList()[bodyIndex]
+                                                .toString(),
+                                            maxLines: 2,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                  ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          width: 120,
+                                          height: 20,
+                                          decoration: BoxDecoration(),
+                                          child: Text(
+                                            formatPrice((DFGMostPopularCall.price(
+                                                    listViewDFGmostpopularResponse
+                                                        .jsonBody) as List)
+                                                .map<String>(
+                                                    (s) => s.toString())
+                                                .toList()[bodyIndex]),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  fontWeight: FontWeight.w500,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontSize: 16,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ],
                             );
