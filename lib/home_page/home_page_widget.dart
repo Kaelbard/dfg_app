@@ -59,6 +59,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        toolbarHeight: 0.1,
+        backgroundColor: Color.fromARGB(255, 40, 175, 148),
+        automaticallyImplyLeading: false,
+        actions: [],
+        centerTitle: true,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -84,7 +92,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       children: [
                         // Generated code for this Row Widget...
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                           child: FutureBuilder<ApiCallResponse>(
                             future: DFGHighlightcardsCall.call(),
                             builder: (context, snapshot) {
@@ -251,7 +259,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     16, 0, 16, 0),
                                 width: MediaQuery.of(context).size.width,
-                                height: 345,
+                                height: 350,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,

@@ -104,9 +104,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
           shrinkWrap: true,
           padding: EdgeInsets.zero,
           crossAxisCount: 3,
-          crossAxisSpacing: 4,
+          crossAxisSpacing: 16,
           mainAxisSpacing: 0,
-          childAspectRatio: 0.86,
+          childAspectRatio: 0.79,
           children: [
             Container(
               width: 200,
@@ -151,8 +151,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontFamily: 'Inter',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
                         ),
                       ],
@@ -206,8 +206,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontFamily: 'Inter',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
                         ),
                       ],
@@ -260,8 +260,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontFamily: 'Inter',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
                         ),
                       ],
@@ -314,8 +314,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontFamily: 'Inter',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
                         ),
                       ],
@@ -369,8 +369,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryColor,
                                       fontFamily: 'Inter',
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
                                     ),
                           ),
                         ),
@@ -427,8 +427,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontFamily: 'Inter',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
                         ),
                       ],

@@ -136,7 +136,7 @@ class _SearchbarWidgetState extends State<SearchbarWidget>
                                             Icons.search,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
-                                            size: 20,
+                                            size: 24,
                                           ),
                                         ),
                                       ],

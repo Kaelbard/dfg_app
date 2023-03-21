@@ -166,6 +166,9 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                                 fontFamily:
                                                                     'Inter',
                                                                 fontSize: 16,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryColor,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -216,7 +219,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  fontSize: 14,
+                                                                  fontSize: 16,
                                                                 ),
                                                       ),
                                                     ),
@@ -284,9 +287,9 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                                             fontFamily:
                                                                                 'Inter',
                                                                             color:
-                                                                                Color(0xFF0D6352),
+                                                                                FlutterFlowTheme.of(context).secondaryColor,
                                                                             fontSize:
-                                                                                12,
+                                                                                14,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -331,7 +334,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                                                                             color:
                                                                                 Color(0xFF6F7A7A),
                                                                             fontSize:
-                                                                                12,
+                                                                                14,
                                                                           ),
                                                                     ),
                                                                   ),

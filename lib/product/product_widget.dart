@@ -61,25 +61,37 @@ class _ProductWidgetState extends State<ProductWidget>
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(0, 255, 255, 255),
+        toolbarHeight: 46,
+        backgroundColor: Color.fromARGB(255, 40, 175, 148),
         automaticallyImplyLeading: false,
         leading: InkWell(
           onTap: () async {
             context.pop();
           },
           child: Container(
-            padding: EdgeInsetsDirectional.all(016),
-            width: 24,
-            height: 24,
+            padding: EdgeInsetsDirectional.fromSTEB(16, 0, 8, 0),
+            width: 26,
+            height: 26,
             child: Row(
               children: [
                 Icon(
                   Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).secondaryText,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   size: 24.0,
                 ),
               ],
             ),
+          ),
+        ),
+        title: Container(
+          child: Text(
+            'Anúncios',
+            style: FlutterFlowTheme.of(context).bodyText2.override(
+                  fontFamily: 'Inter',
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
           ),
         ),
         actions: [],
@@ -171,9 +183,7 @@ class _ProductWidgetState extends State<ProductWidget>
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               0),
-                                                      child: 
-                                                      
-                                                      Image.network(
+                                                      child: Image.network(
                                                         _fixImageUrl(
                                                           DFGGroupGroup
                                                               .detailsCall
@@ -464,6 +474,46 @@ class _ProductWidgetState extends State<ProductWidget>
                               ),
                             ),
                           ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 24, 0, 8),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 25,
+                          child: VerticalDivider(
+                            indent: 0,
+                            thickness: 4,
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            'Promoções',
+                            style: FlutterFlowTheme.of(context).subtitle1,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          height: 220,
+                          decoration: BoxDecoration(),
+                          child: wrapWithModel(
+                            model: PromoModel(),
+                            updateCallback: () => setState(() {}),
+                            child: PromoWidget(),
+                          ),
                         ),
                       ],
                     ),
