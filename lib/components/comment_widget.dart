@@ -36,7 +36,7 @@ class _CommentWidgetState extends State<CommentWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0, 0),
+      alignment: AlignmentDirectional(0, -1),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,12 +68,12 @@ class _CommentWidgetState extends State<CommentWidget> {
                       .take(5)
                       .toList();
                   return Container(
+                    height: 200,
                     width: MediaQuery.of(context).size.width * 0.92,
-                    height: double.infinity,
                     child: Stack(
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 64),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 32),
                           child: PageView.builder(
                             controller: _model.pageViewController ??=
                                 PageController(
@@ -83,7 +83,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                             itemBuilder: (context, feedbackIndex) {
                               final feedbackItem = feedback[feedbackIndex];
                               return Align(
-                                alignment: AlignmentDirectional(0, 0),
+                                alignment: AlignmentDirectional(0, -1),
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
@@ -360,7 +360,7 @@ class _CommentWidgetState extends State<CommentWidget> {
                           alignment: AlignmentDirectional(0, 1),
                           child: Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 32),
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: smooth_page_indicator.SmoothPageIndicator(
                               controller: _model.pageViewController ??=
                                   PageController(

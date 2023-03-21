@@ -145,11 +145,15 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         Text(
                           'Dofus',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontFamily: 'Inter',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ],
                     ),
@@ -196,11 +200,15 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         Text(
                           'Lost Ark',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontFamily: 'Inter',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ],
                     ),
@@ -246,11 +254,15 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         Text(
                           'Genshin Impact',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontFamily: 'Inter',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ],
                     ),
@@ -296,11 +308,15 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         Text(
                           'Albion Online',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontFamily: 'Inter',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ],
                     ),
@@ -350,8 +366,11 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText2.override(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
                                       fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
                                     ),
                           ),
                         ),
@@ -402,11 +421,15 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         Text(
                           'Blizzard',
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontFamily: 'Inter',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ],
                     ),
